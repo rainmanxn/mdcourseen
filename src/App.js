@@ -1,25 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
+import cx from 'classnames';
 import './App.css';
+import {Button} from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import {makeStyles} from "@material-ui/core/styles";
+import theme from "./theme";
+import Lesson4 from "./lessons/lesson4";
+
+
+const useStyles = makeStyles(theme => ({
+  helloThereStyle: {
+    fontStyle: 'oblique',
+    color: 'red'
+  },
+  buttonStyle: {
+    [theme.breakpoints.up('sm')]: {
+      color: 'white'
+    }
+  },
+  backgroundColor: {
+    background: 'blue',
+  }
+}))
 
 function App() {
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Button fullWidth className={cx(classes.buttonStyle, classes.backgroundColor)}>Push Here</Button>
+      <Typography className={classes.helloThereStyle} color='secondary' variant='h1'>Hello there</Typography>
+      <Button color='primary' variant='outlined'>
+        First Button
+      </Button>
+      <Lesson4 />
+    </>
   );
 }
 
